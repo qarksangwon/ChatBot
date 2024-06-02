@@ -1,0 +1,18 @@
+{
+    "name": "rental",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "name": "http://localhost:3984/api/messages",
+            "id": "dd4da5d0-fc9a-11ed-b030-33c0076453a6",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:3984/api/messages"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "path": "C:\\Users\\0629s\\OneDrive\\바탕 화면\\chatbot\\rental.bot",
+    "overrides": null
+}

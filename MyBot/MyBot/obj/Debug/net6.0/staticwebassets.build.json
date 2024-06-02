@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "CC2sxrMLkSQ48XasKJ1vAb3eYixjdiTO2sXsspYZipQ=",
+  "Source": "MyBot",
+  "BasePath": "_content/MyBot",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MyBot\\wwwroot",
+      "Source": "MyBot",
+      "ContentRoot": "C:\\Users\\0629s\\OneDrive\\바탕 화면\\chatbot\\MyBot\\MyBot\\wwwroot\\",
+      "BasePath": "_content/MyBot",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\0629s\\OneDrive\\바탕 화면\\chatbot\\MyBot\\MyBot\\wwwroot\\default.htm",
+      "SourceId": "MyBot",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\0629s\\OneDrive\\바탕 화면\\chatbot\\MyBot\\MyBot\\wwwroot\\",
+      "BasePath": "_content/MyBot",
+      "RelativePath": "default.htm",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\default.htm"
+    }
+  ]
+}
