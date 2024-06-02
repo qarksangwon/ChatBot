@@ -1,0 +1,19 @@
+await context.PostAsync(strMessage);    //return our reply to the user
+
+var message = context.MakeMessage();                 //Create message     
+
+//Hero Card-01~04 attachment 
+
+                    message.Attachments.Add(CardHelper.GetHeroCard("1월", "1월",
+                                            this.strServerUrl + "menu_01.jpg", "자장면", "자장면"));
+
+                    message.Attachments.Add(CardHelper.GetHeroCard("짬뽕", "6000원",
+                                            this.strServerUrl + "menu_02.jpg", "짬뽕", "짬뽕"));
+
+                    message.Attachments.Add(CardHelper.GetHeroCard("탕수육", "12000원",
+                                            this.strServerUrl + "menu_03.jpg", "탕수육", "탕수육"));
+
+                    message.Attachments.Add(CardHelper.GetHeroCard("Exit food order...", "Exit",
+                                            null, "Exit Order", "Exit"));
+
+                    message.AttachmentLayout = "carousel";              //Setting Menu Layout Format

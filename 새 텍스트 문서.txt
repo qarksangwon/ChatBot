@@ -1,0 +1,127 @@
+else
+            {
+                if (OrderCHK == 0)
+                {
+                    strMessage = "날짜 선택";
+                    await context.PostAsync(strMessage);    //return our reply to the user
+
+                    var message = context.MakeMessage();                 //Create message      
+                    var actions = new List<CardAction>();
+
+                    actions.Add(new CardAction() { Title = "1월", Value = "1", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "2월", Value = "2", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "3월", Value = "3", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "4월", Value = "4", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "5월", Value = "5", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "6월", Value = "6", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "7월", Value = "7", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "8월", Value = "8", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "9월", Value = "9", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "10월", Value = "10", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "11월", Value = "11", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "12월", Value = "12", Type = ActionTypes.ImBack });
+                   
+                    message.Attachments.Add(                    
+                    new HeroCard { Title = "원하시는 월을 고르세요", Buttons = actions }.ToAttachment()
+                  );
+                    await context.PostAsync(message);                   //Output message 
+                    context.Wait(this.MessageReceivedAsync);
+                }
+                else if (OrderCHK == 1)
+                {
+                    var message = context.MakeMessage();                 //Create message      
+                    var actions = new List<CardAction>();
+                    actions.Add(new CardAction() { Title = "네", Value = "네", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "아니요", Value = "아니요", Type = ActionTypes.ImBack });
+                    message.Attachments.Add(
+                    new HeroCard { Title = chkMonth + "월로 선택하시겠습니까?", Buttons = actions }.ToAttachment()
+                  );
+                    await context.PostAsync(message);
+                    if (chkMonth % 2 == 1)
+                    {
+                        MonthDay = 31;
+                        context.Wait(this.MessageReceivedAsync);
+                    }
+                    else if(chkMonth == 2)
+                    {
+                        MonthDay = 28;
+                        context.Wait(this.MessageReceivedAsync);
+                    }
+                    else
+                    {
+                        MonthDay = 30;
+                        context.Wait(this.MessageReceivedAsync);
+                    }
+                }
+                else if (OrderCHK == 2)
+                {
+                    var message = context.MakeMessage();
+                    var actions = new List<CardAction>();
+                    for (int idx=0; idx<MonthDay; idx++) {
+                        //if (nodays.Contains(idx))
+                        //{
+                        //    continue;
+                        //}
+                        //else
+                        //{
+                            actions.Add(new CardAction() { Title = $"{idx+1}일", Value = $"{idx+1}", Type = ActionTypes.ImBack });
+                        //}
+                    }
+                    message.Attachments.Add(
+                    new HeroCard { Title = "시작일을 고르세요", Buttons = actions }.ToAttachment());
+                    await context.PostAsync(message);
+                    context.Wait(this.MessageReceivedAsync);
+                }
+                else if(OrderCHK == 3)
+                {
+                    
+                    var message = context.MakeMessage();
+                    var actions = new List<CardAction>();
+
+                    actions.Add(new CardAction() { Title = "2일", Value = "2", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "3일", Value = "3", Type = ActionTypes.ImBack });
+                    actions.Add(new CardAction() { Title = "4일", Value = "4", Type = ActionTypes.ImBack });
+                    message.Attachments.Add(
+                   new HeroCard { Title = "예약하실 일수를 고르세요", Buttons = actions }.ToAttachment());
+                    await context.PostAsync(message);
+                    context.Wait(this.MessageReceivedAsync);
+                }
+                else if(OrderCHK == 4)
+                {
+                    await context.PostAsync($"{chkMonth}월 {choiceDay}일부터 {rentDays}일간 예약하시기를 원하시면 \n" +
+                        "전화번호를 입력해 주세요.\n" +
+                        "취소하길 원하시면 아래의 버튼을 눌러주세요.(첫화면으로 돌아갑니다)");
+
+                    var message = context.MakeMessage();
+                    var actions = new List<CardAction>();
+
+                    actions.Add(new CardAction() { Title = "취소", Value = "취소", Type = ActionTypes.ImBack });
+                    message.Attachments.Add(
+                   new HeroCard { Title = "", Buttons = actions }.ToAttachment());
+                    await context.PostAsync(message);
+                    context.Wait(this.MessageReceivedAsync);
+                }
+                else if(OrderCHK == 5)
+                {
+                    await context.PostAsync("사용하실 패스워드를 입력해 주세요.");
+                    context.Wait(this.MessageReceivedAsync);
+                }
+                else if(OrderCHK == 6)
+                {
+                    var message = context.MakeMessage();
+                    var actions = new List<CardAction>();
+
+                    actions.Add(new CardAction() { Title = "예약완료", Value = "예약완료", Type = ActionTypes.ImBack });
+
+                    message.Attachments.Add(
+                   new HeroCard
+                   {
+                       Title = "예약완료 버튼을 누르시거나 \'예약완료\' 라고 타이핑하시면 예약이 완료됩니다.",
+                       Buttons = actions
+                   }.ToAttachment());
+                    await context.PostAsync(message);
+                    context.Wait(this.MessageReceivedAsync);
+
+                }
+            }
+        }
